@@ -1,4 +1,4 @@
-package com.yusril.codelabservice
+package com.yusril.codelabservice.services
 
 import android.app.Service
 import android.content.Intent

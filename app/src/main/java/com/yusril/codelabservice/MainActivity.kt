@@ -1,9 +1,12 @@
 package com.yusril.codelabservice
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.yusril.codelabservice.services.MyJobIntentService
+import com.yusril.codelabservice.services.MyService
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         }
         val btnStartJobIntentService = findViewById<Button>(R.id.btn_start_job_intent_service)
         btnStartJobIntentService.setOnClickListener {
+            val mStartIntentService = Intent(this@MainActivity, MyJobIntentService::class.java)
+            mStartIntentService.putExtra(MyJobIntentService.EXTRA_DURATION, 5000L)
+            MyJobIntentService.enqueueWork(this, mStartIntentService)
 
         }
         val btnStartBoundService = findViewById<Button>(R.id.btn_start_bound_service)
